@@ -3,7 +3,7 @@ import java.util.*;
 class Dijkstra {
     int n;
 
-    class Edge {
+    private class Edge {
 	int to;
 	long cost;
 	Edge(int to, long cost) {
@@ -12,13 +12,15 @@ class Dijkstra {
 	}
     }
 
-    List<Edge>[] graph;
+    private class Edges extends ArrayList<Edge> {}
+
+    Edges[] graph;
 
     Dijkstra(int n) {
 	this.n = n;
-	graph = new List[n];
+	graph = new Edges[n];
 	for (int i = 0; i < n; i++) {
-	    graph[i] = new ArrayList<Edge>();
+	    graph[i] = new Edges();
 	}
     }
 
