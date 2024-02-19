@@ -63,26 +63,27 @@ abstract class ModInt {
 	}
     }
 
-    private void autoBuild(int n) {
+    private void autoBuild(int size) {
 	if (fact == null) {
-	    build(Integer.max(200001, n + 1));
-	} else if (fact.length <= n) {
-	    build(Integer.max(fact.length * 2, n + 1));
+	    build(Integer.max(200001, size));
+	} else if (fact.length < size) {
+	    build(Integer.max(fact.length * 2, size));
 	}
     }
 
     long fact(int n) {
-	autoBuild(n);
+	autoBuild(n + 1);
 	return fact[n];
     }
 
     long factInv(int n) {
-	autoBuild(n);
+	autoBuild(n + 1);
 	return factInv[n];
     }
 
     long comb(int n, int k) {
-	autoBuild(n);
+	if (k < 0 || n < k) { return 0; }
+	autoBuild(n + 1);
 	return mul(mul(fact[n], factInv[k]), factInv[n - k]);
     }
 }
