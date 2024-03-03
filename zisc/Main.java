@@ -28,6 +28,7 @@ class Reader {
 		st = new StringTokenizer(br.readLine());
 	    } catch (Exception e) {
 		e.printStackTrace();
+		throw new RuntimeException("readLine() failed.");
 	    }
 	}
 	return st.nextToken();
